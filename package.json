@@ -1,0 +1,11 @@
+{
+  "name": "Api-myContacts",
+  "version": "1.0.0",
+  "description": "api project my contacts",
+  "main": "src/index.js",
+  "author": "Werbeth",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
