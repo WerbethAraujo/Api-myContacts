@@ -48,6 +48,21 @@ class ContactsRepository {
       resolve(newContact);
     });
   }
+  update(id, { name, email, fone, category_id }) {
+    return new Promise((resolve) => {
+      const updatedContact = {
+        id,
+        name,
+        email,
+        fone,
+        category_id,
+      };
+      contacts = contacts.map((contact) => {
+        return contact.id === id ? updatedContact : contact;
+      });
+      resolve(updatedContact);
+    });
+  }
 
   delete(id) {
     return new Promise((resolve) => {
