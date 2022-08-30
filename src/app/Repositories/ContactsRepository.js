@@ -1,6 +1,7 @@
 const db = require("../../database/index");
 
 class ContactsRepository {
+  //busca todos os contatos
   async findAll(orderBy = "ASC") {
     const direction = orderBy.toUpperCase() === "DESC" ? "DESC" : "ASC";
     const rows = await db.query(
@@ -11,7 +12,7 @@ class ContactsRepository {
     );
     return rows;
   }
-
+  //busca um contato pelo id
   async findById(id) {
     const [row] = await db.query(
       `SELECT contacts.*, categories.name AS category_name
@@ -22,6 +23,7 @@ class ContactsRepository {
     );
     return row;
   }
+  //busca um email existente
   async findByEmail(email) {
     const [row] = await db.query(
       `
@@ -30,7 +32,7 @@ class ContactsRepository {
     );
     return row;
   }
-
+  //cria um novo contato
   async create({ name, email, phone, category_id }) {
     const [row] = await db.query(
       `
@@ -42,6 +44,7 @@ class ContactsRepository {
     );
     return row;
   }
+  //atualiza um contato existente
   async update(id, { name, email, phone, category_id }) {
     const [row] = await db.query(
       `
@@ -54,7 +57,7 @@ class ContactsRepository {
     );
     return row;
   }
-
+  //detela um contato
   async delete(id) {
     const contactDelected = await db.query(
       `DELETE FROM contacts WHERE id = $1`,
