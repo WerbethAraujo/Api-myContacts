@@ -1,4 +1,4 @@
-const db = require("../../database/index");
+const db = require('../../database/index');
 
 class CategoriesRepository {
   async findAll() {
@@ -6,6 +6,7 @@ class CategoriesRepository {
       SELECT * FROM categories ORDER BY name`);
     return rows;
   }
+
   async create({ name }) {
     const [row] = await db.query(
       `
@@ -13,10 +14,11 @@ class CategoriesRepository {
        VALUES($1)
        RETURNING *
       `,
-      [name]
+      [name],
     );
     return row;
   }
+
   async update(id, { name }) {
     const [row] = await db.query(
       `
@@ -25,15 +27,16 @@ class CategoriesRepository {
       WHERE id = $2
       RETURNING *
       `,
-      [name, id]
+      [name, id],
     );
 
     return row;
   }
+
   async delete(id) {
     const categoryDelected = await db.query(
-      `DELETE FROM categories WHERE id= $1`,
-      [id]
+      'DELETE FROM categories WHERE id= $1',
+      [id],
     );
     return categoryDelected;
   }
