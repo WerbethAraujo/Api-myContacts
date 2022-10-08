@@ -14,5 +14,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+    camelcase: ['error', { allow: ['category_id'] }],
   },
 };
